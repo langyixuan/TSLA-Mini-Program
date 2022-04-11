@@ -1,44 +1,18 @@
-// miniprogram/pages/index/index.js
+// miniprogram/pages/activity/activity.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    swiperList:[],
-    currentSwiper: 0
-  },
 
-  handleSwiperChange(e) {
-    const { current } = e.detail
-    this.setData({
-      currentSwiper: current
-    })
-  },
-
-  // 加载轮播图
-  loadSwiper() {
-    this.db.collection('swiper').get().then(res => {
-      this.setData({
-        swiperList: res.data
-      })
-    })
-  },
-  
-  // 跳转到车辆产品页面
-  toProduct(e) {
-    let { productId } = e.currentTarget.dataset
-    wx.navigateTo({
-      url: `/pages/product/product?id=${productId}`,
-    })
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.db = wx.cloud.database()
-    this.loadSwiper()
+
   },
 
   /**

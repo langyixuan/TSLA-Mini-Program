@@ -1,2 +1,76 @@
-<!--miniprogram/pages/index/index.wxml-->
-<text>miniprogram/pages/index/index.wxml</text>
+<view class="index">
+  <!-- 轮播图区域 -->
+  <view class="swiper-container">
+    <swiper bindchange="handleSwiperChange">
+    <!-- 轮播图区域 -->
+      <swiper-item wx:for="{{ swiperList }}" wx:key="index">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+      </swiper-item> 
+    </swiper>
+    <!-- 浮动描述区域 -->
+    <view class="swiper-float-content" wx:for="{{ swiperList }}" wx:key="index" wx:if="{{ currentSwiper === index }}">
+      <view class="car-title">
+        {{ item.title }}
+      </view>
+      <view class="car-desc">
+        <view class="desc-title">
+          <view class="main-title">{{ item.config.space }}+</view>
+          <view class="sub-title">升储物空间</view>
+        </view>
+        <view class="desc-title">
+           <view class="main-title">{{ item.config.battery }}公里</view>
+           <view class="sub-title">续航里程</view>
+        </view>
+        <view class="desc-title">
+           <view class="main-title">{{ item.config.speed }}</view>
+           <view class="sub-title">最高时速</view>
+        </view>
+      </view>
+      <view class="car-button">
+        <button>预约试驾</button>
+        <text bindtap="toProduct" data-product-id="{{ item.product }}">查看配置</text>
+      </view>
+      <view class="swiper-dots">
+        <view class="dots-item {{ currentSwiper === index ? 'dots-active' : ''}}" wx:for="{{ swiperList }}" wx:key="_id"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 杂志轮播区域 -->
+  <view class="magzine-container">
+    <view class="magzine-title">T-ZONE</view>
+    <image class="magzine-cover" src="../../images/e-zone.jpg" mode="widthFix"></image>
+    <view class="magzine-name">2021年10月号</view>
+  </view>
+
+  <!-- 服务区域 -->
+  <view class="service-container">
+    <view class="service">
+      <view class="service-title">
+        <view class="big">金融服务</view>
+        <view class="small">定制我的金融方案</view>
+      </view>
+      <image class="icon-img" src="https://china-community-app.tesla.cn/wechatmini/credit_card.png" mode="widthFix"></image
+      >
+    </view>
+
+    <view class="service service-bg">
+      <view class="service-title">
+        <view class="big">新手视频</view>
+        <view class="small">观看视频</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部logo区域 -->
+  <view class="footer-logo">
+    <view class="item">
+      <image class="logo" mode="widthFix" src="../../images/ic_clean_engry_policy.svg"></image>
+      <view class="title">新能源政策</view>
+    </view>
+    <view class="item">
+      <image class="logo" mode="widthFix" src="../../images/ic_traidin.svg"></image>
+      <view class="title">车辆置换</view>
+    </view>
+  </view>
+</view>

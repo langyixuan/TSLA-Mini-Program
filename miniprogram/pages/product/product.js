@@ -1,36 +1,12 @@
-// miniprogram/pages/index/index.js
+// pages/product/product.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    swiperList:[],
-    currentSwiper: 0
-  },
-
-  handleSwiperChange(e) {
-    const { current } = e.detail
-    this.setData({
-      currentSwiper: current
-    })
-  },
-
-  // 加载轮播图
-  loadSwiper() {
-    this.db.collection('swiper').get().then(res => {
-      this.setData({
-        swiperList: res.data
-      })
-    })
-  },
-  
-  // 跳转到车辆产品页面
-  toProduct(e) {
-    let { productId } = e.currentTarget.dataset
-    wx.navigateTo({
-      url: `/pages/product/product?id=${productId}`,
-    })
+    product: null,
+    product_lines: []
   },
 
   /**
@@ -38,8 +14,22 @@ Page({
    */
   onLoad: function (options) {
     this.db = wx.cloud.database()
-    this.loadSwiper()
+    this.db.collection('product').doc(options.id).get().then(res => {
+      this.setData({
+        product: res.data
+      })
+      this._loadProductLine(res.data.product_line)
+    })
   },
+
+  _loadProductLine(productLine) {
+    this.db.collection('product_line').where({
+      _id: this.db.command.in(productLine)
+    }).get().then(res => {
+        this.setData({ product_lines: res.data })
+    })
+  },
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成
