@@ -1,0 +1,36 @@
+  <!-- 轮播图区域 -->
+  <view class="swiper-container">
+    <swiper bindchange="handleSwiperChange">
+    <!-- 轮播图区域 -->
+      <swiper-item wx:for="{{ swiperList }}" wx:key="index">
+        <image src="{{item.cover}}" mode="aspectFill"></image>
+      </swiper-item> 
+    </swiper>
+    <!-- 浮动描述区域 -->
+    <view class="swiper-float-content" wx:for="{{ swiperList }}" wx:key="index" wx:if="{{ currentSwiper === index }}">
+      <view class="car-title">
+        {{ item.title }}
+      </view>
+      <view class="car-desc">
+        <view class="desc-title">
+          <view class="main-title">{{ item.config.space }}+</view>
+          <view class="sub-title">升储物空间</view>
+        </view>
+        <view class="desc-title">
+           <view class="main-title">{{ item.config.battery }}公里</view>
+           <view class="sub-title">续航里程</view>
+        </view>
+        <view class="desc-title">
+           <view class="main-title">{{ item.config.speed }}</view>
+           <view class="sub-title">最高时速</view>
+        </view>
+      </view>
+      <view class="car-button">
+        <button bindtap="handleBookCar">预约试驾</button>
+        <text bindtap="toProduct" data-product-id="{{ item.product }}">查看配置</text>
+      </view>
+      <view class="swiper-dots">
+        <view class="dots-item {{ currentSwiper === index ? 'dots-active' : ''}}" wx:for="{{ swiperList }}" wx:key="_id"></view>
+      </view>
+    </view>
+  </view>

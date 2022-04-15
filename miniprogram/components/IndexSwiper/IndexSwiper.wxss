@@ -1,0 +1,117 @@
+.swiper-container {
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  margin-bottom: 80rpx;
+}
+
+swiper {
+  width: 100%;
+  height: 100%;
+}
+
+swiper image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.swiper-float-content {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+}
+
+.swiper-float-content .car-title {
+  font-size: 60rpx;
+  font-weight: 700;
+  margin-top: 226rpx;
+  animation: fadeIn 1.3s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.swiper-float-content .car-desc {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 44rpx;
+  color: white;
+  margin-top: 560rpx;
+  animation: fadeIn2 2s;
+}
+
+@keyframes fadeIn2 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.car-desc .desc-title .main-title {
+  font-weight: 700;
+  font-size: 34rpx;
+}
+
+.car-desc .desc-title .sub-title {
+  font-size: 24rpx;
+}
+
+.swiper-float-content .car-button {
+  color: white;
+  font-weight: 600;
+  margin-top: 54rpx;
+  font-size: 26rpx;
+  pointer-events: all;
+}
+
+.car-button button {
+  padding: 0;
+  color: white;
+  font-size: 26rpx;
+  font-weight: 600;
+  width: 80% !important;
+  height: 80rpx !important;
+  line-height: 80rpx;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 40rpx;
+  margin-bottom: 32rpx;
+}
+
+.car-button text {
+  margin-top: 60rpx;
+  color: white;
+}
+
+.swiper-float-content .swiper-dots {
+  display: flex;
+  justify-content: center;
+  margin-top: 56rpx;
+  border-radius: 32rpx;
+}
+
+.swiper-dots .dots-item {
+  width: 32rpx;
+  height: 4rpx;
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.swiper-dots .dots-active {
+  background-color: rgba(255, 255, 255, 1);
+}
